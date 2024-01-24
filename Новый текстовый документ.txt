@@ -1,0 +1,16 @@
+# Задайте URL репозитория на GitHub и имя архива
+$repoUrl = "https://github.com/sogohimo/bgi/blob/main/BGinf.zip"
+$zipFile = "BGinf.zip"
+$extractPath = "C:\bginf"
+
+# Скачать архив
+Invoke-WebRequest -Uri $repoUrl -OutFile $zipFile
+
+# Распаковать архив
+Expand-Archive -Path $zipFile -DestinationPath $extractPath -Force
+
+# Удалить скачанный архив
+Remove-Item $zipFile -Force
+
+# Запустить что-то после распаковки (например, исполняемый файл)
+Start-Process -FilePath "$extractPath\путь\к\вашему\исполняемому\файлу.exe"
